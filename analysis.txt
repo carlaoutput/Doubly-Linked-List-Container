@@ -1,0 +1,49 @@
+The worst-case run-time complexity of the member function reverse() of the List
+
+Big-O Notation: 
+We express complexity using big-O notation. 
+
+reverse the order of the elements;  O(n)
+
+I swapped all the elements (the pointers) I have..  std::swap()
+
+	if(!empty()) .. 	 is the list is empty then we just swap head and tail below
+		auto ptr = head;
+
+		while(ptr != nullptr)..  so far, we aren't at the end of the list
+		
+		std::swap(ptr->next, ptr->prev);
+		ptr = ptr->prev; ..since prev is swapped, it represents the next node
+			
+	finally, I swapped the front and back ptrs
+	std::swap(head,tail);
+	
+	
+			
+===============================================================================
+General used on reverse():
+That reverse the order of the elements in the list. That is, the original first 
+element becomes the last, while the original last becomes the first, and 
+this range contains all the elements between first and last, including the
+element pointed by first but not the element pointed by last.
+The function calls to swap the elements to their new locations.
+
+The behavior of this function template is equivalent to:
+
+Example; the behavior of this function template is equivalent to:
+
+template <class BidirectionalIterator>
+void reverse (BidirectionalIterator first, BidirectionalIterator last);
+  
+template <class BidirectionalIterator>
+  void reverse (BidirectionalIterator first, BidirectionalIterator last)
+{
+  while ((first!=last)&&(first!=--last))
+  {
+    std::iter_swap (first,last);
+    ++first;
+  }
+  
+General Complexity of reverse(): 
+Linear in half the distance between first and last: Swaps elements.
+-------------------------------------------------------------------------------
